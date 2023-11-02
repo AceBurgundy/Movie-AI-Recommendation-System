@@ -36,6 +36,6 @@ def generate_file_tree(directory, excluded_items, prefix='', is_last=False):
 
 if __name__ == "__main__":
     starting_directory = "."  # Change this to the directory you want to start from
-    excluded_items = ['__pycache__', 'env', 'icons', '.gitignore', '.vscode']  # Note the removal of the double underscores
+    excluded_items = ['__pycache__', 'env', 'icons', '.gitignore', '.vscode', '.git']  # Note the removal of the double underscores
     print(starting_directory)
     generate_file_tree(starting_directory, excluded_items)
