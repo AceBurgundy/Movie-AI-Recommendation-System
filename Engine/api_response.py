@@ -17,7 +17,7 @@ class RouteResponse:
     @staticmethod
     def success(message="", data=None) -> RouteResponseType:
         """
-        The `success` function returns a dictionary with a success status, optional data, and an optional
+        This function returns a dictionary with a success status, optional data, and an optional
         message.
         
         Args:
@@ -30,7 +30,7 @@ class RouteResponse:
         
         Returns:
         --------
-            A Jsonfied dictionary is being returned with three key-value pairs: 
+            A Jsonified dictionary is being returned with three key-value pairs: 
             "status" with the value of "success", 
             "data" with the value of the data parameter (which can be None), 
             "message" with the value of the message parameter (which can be an empty string).
@@ -40,7 +40,7 @@ class RouteResponse:
     @staticmethod
     def failed(message="", data=None) -> RouteResponseType:
         """
-        The above function returns a dictionary with a status, data, and message.
+        This function returns a dictionary with a status, data, and message.
         
         Args:
         -----
@@ -52,7 +52,7 @@ class RouteResponse:
         
         Returns:
         --------
-            A Jsonfied  dictionary is being returned with three key-value pairs: 
+            A Jsonified dictionary is being returned with three key-value pairs: 
             "status" with the value of "failed", 
             "data" with the value of the data parameter (which can be None), 
             "message" with the value of the message parameter (which can be an empty string).
