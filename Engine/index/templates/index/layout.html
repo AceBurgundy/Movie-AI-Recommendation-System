@@ -1,0 +1,99 @@
+{% extends "head.html" -%}
+
+{% block script -%}
+<script src="{{ url_for( 'index.static' , filename='layout.js') }}" type="module"></script>
+{%- endblock script %}
+
+{% block style -%}
+<link rel="stylesheet" href="{{ url_for( 'index.static' , filename='index.css') }}">
+{%- endblock style %}
+
+{% block main -%}
+<main id="content-block">
+
+    <nav id="side-bar">
+
+        <div id="side-bar-top">
+
+            <div id="side-bar-top-header">
+                <div id="app-details" class="nav-link" data-href="/">
+                    <img id="app-logo" src="{{ url_for('static', filename='WhismaLogoWEBP.webp')}}" alt="" srcset="">
+                    <p id="app-name">Whisma</p>
+                </div>
+                <div id="close-nav-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" class="hamburger">
+                        <g fill="#1C1C1C"><path d="M1 8h30a1 1 0 000-2H1a1 1 0 000 2zM31 15H1a1 1 0 000 2h30a1 1 0 000-2zM31 24H1a1 1 0 000 2h30a1 1 0 000-2z"></path></g></svg>
+                </div>
+            </div>
+
+            <div id="side-bar-actions">
+
+                <div id="about-section" class="nav-link" data-href="{{ url_for('index.about') }}">
+                    <p>About</p>
+                    <svg id="info-icon" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                        <rect width="256" height="256" fill="none"></rect>
+                        <circle cx="128" cy="128" r="96" fill="none" stroke="#000" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="16"></circle>
+                        <polyline fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="16" points="120 120 128 120 128 176 136 176"></polyline>
+                        <circle cx="128" cy="84" r="12"></circle>
+                    </svg>
+                </div>
+
+                <div id="logout" class="nav-link" data-href="{{ url_for('user.logout') }}">
+                    <p>Logout</p>
+                    <svg id="logout-icon" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M4,12a1,1,0,0,0,1,1h7.59l-2.3,2.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l4-4a1,1,0,0,0,.21-.33,1,1,0,0,0,0-.76,1,1,0,0,0-.21-.33l-4-4a1,1,0,1,0-1.42,1.42L12.59,11H5A1,1,0,0,0,4,12ZM17,2H7A3,3,0,0,0,4,5V8A1,1,0,0,0,6,8V5A1,1,0,0,1,7,4H17a1,1,0,0,1,1,1V19a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V16a1,1,0,0,0-2,0v3a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V5A3,3,0,0,0,17,2Z" />
+                    </svg>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="side-bar-bottom">
+            <div id="profile-anchor" class="nav-link" data-href="{{ url_for('profile.get_profile', user_id=current_user.id) }}">
+                <img src="{{ image_file }}" class="dashboard-profile-picture" alt="">
+                <p>{{ current_user.username }}</p>
+            </div>
+
+            <div id="side-bar-bottom-footer">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 47.5 47.5" id="sun">
+                    <defs>
+                        <clipPath id="a">
+                            <path d="M0 38h38V0H0v38Z"></path>
+                        </clipPath>
+                    </defs>
+                    <g fill="#ffac33" clip-path="url(#a)" transform="matrix(1.25 0 0 -1.25 0 47.5)">
+                        <path
+                            d="M17 35s0 2 2 2 2-2 2-2v-2s0-2-2-2-2 2-2 2v2zM35 21s2 0 2-2-2-2-2-2h-2s-2 0-2 2 2 2 2 2h2zM5 21s2 0 2-2-2-2-2-2H3s-2 0-2 2 2 2 2 2h2zM10.121 29.706s1.414-1.414 0-2.828-2.828 0-2.828 0l-1.415 1.414s-1.414 1.414 0 2.829c1.415 1.414 2.829 0 2.829 0l1.414-1.415ZM31.121 8.707s1.414-1.414 0-2.828-2.828 0-2.828 0l-1.414 1.414s-1.414 1.414 0 2.828 2.828 0 2.828 0l1.414-1.414ZM30.708 26.879s-1.414-1.414-2.828 0 0 2.828 0 2.828l1.414 1.414s1.414 1.414 2.828 0 0-2.828 0-2.828l-1.414-1.414ZM9.708 5.879s-1.414-1.414-2.828 0 0 2.828 0 2.828l1.414 1.414s1.414 1.414 2.828 0 0-2.828 0-2.828L9.708 5.879ZM17 5s0 2 2 2 2-2 2-2V3s0-2-2-2-2 2-2 2v2zM29 19c0 5.523-4.478 10-10 10-5.523 0-10-4.477-10-10 0-5.522 4.477-10 10-10 5.522 0 10 4.478 10 10">
+                        </path>
+                    </g>
+                </svg>
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" id="sun-off">
+                    <path
+                        d="M16 7c-4.962 0-9 4.037-9 9s4.038 9 9 9c4.963 0 9-4.037 9-9s-4.037-9-9-9zm0 15c-3.309 0-6-2.691-6-6s2.691-6 6-6 6 2.691 6 6-2.691 6-6 6zm0-16.361a1.5 1.5 0 0 0 1.5-1.5V2a1.5 1.5 0 0 0-3 0v2.139a1.5 1.5 0 0 0 1.5 1.5zM6.552 8.673a1.498 1.498 0 0 0 2.122 0 1.5 1.5 0 0 0 0-2.121L7.16 5.04A1.5 1.5 0 1 0 5.04 7.161l1.512 1.512zM5.638 16a1.5 1.5 0 0 0-1.5-1.5H2a1.5 1.5 0 0 0 0 3h2.138a1.5 1.5 0 0 0 1.5-1.5zm.914 7.327L5.04 24.84a1.5 1.5 0 1 0 2.121 2.121l1.512-1.512a1.5 1.5 0 1 0-2.12-2.12zM16 26.361a1.5 1.5 0 0 0-1.5 1.5V30a1.5 1.5 0 0 0 3 0v-2.139a1.5 1.5 0 0 0-1.5-1.5zm9.448-3.034a1.5 1.5 0 1 0-2.12 2.121l1.51 1.512a1.496 1.496 0 0 0 2.121 0 1.5 1.5 0 0 0 .001-2.121l-1.512-1.512zM30 14.5h-2.139a1.5 1.5 0 0 0 0 3H30a1.5 1.5 0 0 0 0-3zm-5.612-5.388c.383 0 .767-.146 1.06-.44l1.512-1.51a1.5 1.5 0 1 0-2.121-2.122l-1.512 1.512a1.5 1.5 0 0 0 1.06 2.56z">
+                    </path>
+                </svg>    
+            </div>
+        </div>
+
+    </nav>
+
+    <section id="filter-blur"></section>
+
+    <!-- Main Content -->
+    <section id="main-content">
+
+        <section id="particles-js"></section>
+
+        <div id="open-nav-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" class="hamburger">
+                <g fill="#1C1C1C"><path d="M1 8h30a1 1 0 000-2H1a1 1 0 000 2zM31 15H1a1 1 0 000 2h30a1 1 0 000-2zM31 24H1a1 1 0 000 2h30a1 1 0 000-2z"></path></g></svg>
+        </div>
+        {% block about -%}{%- endblock about %}
+        {% block user -%}{%- endblock user %}
+        {% block movie -%}{%- endblock movie %}
+    </section>
+</main>
+{%- endblock %}

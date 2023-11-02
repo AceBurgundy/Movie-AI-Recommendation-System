@@ -1,0 +1,22 @@
+{% extends 'layout.html' %} 
+
+{% block component_style -%}
+    <link rel="stylesheet" href="{{ url_for( 'index.static' , filename='about.css') }}">
+{% endblock component_style %}
+
+{% block about -%}
+
+    <div id="about">
+        <h1 id="about__title">Welcome to Whisma: Where Movie Whispers Meet Cinematic Magic</h1>
+        <p class="about__paragraph">
+            Whisma is a cutting-edge movie recommendation platform that seamlessly blends the art of cinematic storytelling with the precision of AI technology. It's a haven for film enthusiasts, providing a personalized space to explore and discover movies that truly resonate with your taste.
+        </p>
+        <p class="about__paragraph">
+            At Whisma, we comprehend the influence of films and how they can transport us to different worlds. Whether you're a cinephile seeking hidden gems or a casual viewer in search of the perfect movie night, Whisma is your guide to an enriching cinematic journey. Our platform encourages discussions, allowing users to interact through reviews, ratings, and tailored movie suggestions. With an extensive library spanning from classics to the latest releases, Whisma ensures there's a movie for every mood and moment, bringing the magic of cinema to your screen.
+        </p>
+        <p class="about__paragraph">
+            Join the Whisma community today and embark on a voyage through the world of movies where your cinematic preferences find a voice and your love for film finds a home. Immerse yourself in the world of film discussions, share your thoughts, and witness the enchantment of cinema as recommendations spark your movie nights. With Whisma, the possibilities are endless, and the cinematic connections are unforgettable. Welcome to a realm where movies come alive, one recommendation at a time.
+        </p>
+    </div>
+
+{%- endblock about %}

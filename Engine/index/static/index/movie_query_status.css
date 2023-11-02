@@ -1,0 +1,36 @@
+#status-list {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    top: 50%;
+    left: 5%;
+    pointer-events: none;
+    flex-direction: column;
+}
+
+.status-message {
+    font-size: calc(6.5vw + 1rem);
+    opacity: 0;
+    color: var(--text);
+    transition: 500ms ease-in-out;
+}
+
+.status-message.start {
+    opacity: 1;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+}
+
+.status-message.end {
+    opacity: 0;
+    transform: translateY(-140%);
+}
+
+@media screen and (min-width: 1357px) {
+    #status-list {
+        width: 60%;
+    }
+}

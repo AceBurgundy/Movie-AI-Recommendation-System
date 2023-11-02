@@ -1,0 +1,77 @@
+#toggle-refresh {
+    background-color: var(--primary);
+    fill: var(--iconFill);
+    position: fixed;
+    z-index: 90;
+    right: 0;
+    bottom: -10%;
+    width: 5rem;
+    height: 5rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    margin: 2rem;
+    opacity: 0;
+    cursor: pointer;
+}
+
+#toggle-refresh.active {
+    bottom: 0%;
+    opacity: 1;
+}
+
+#refresh-warn {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    top: 10%;
+    background-color: var(--background);
+    transition: 250ms ease-in-out;
+    opacity: 0;
+}
+
+#refresh-dialog {
+    position: absolute;
+    background-color: var(--background);
+    border: 2px solid white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    border-radius: 10px;
+    padding: 1rem;
+    transition: 500ms ease-in-out;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    opacity: 0;
+}
+
+#refresh-warn.active {
+    opacity: 1;
+    top: 0%;
+}
+
+#refresh-warn.active>#refresh-dialog {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
+
+#refresh-dialog-message {
+    font-size: 1.2rem;
+}
+
+#refresh-dialog-options {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.refresh-dialog-options-button {
+    background-color: var(--primary);
+    color: var(--text);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer
+}

@@ -1,0 +1,48 @@
+<form id="movie-query" class="active">
+
+    <input 
+        id="movie-query-title-input" 
+        type="text"
+        name="title"
+        value="The Shawshank Redemption"
+        required>
+    
+    <input 
+        id="movie-query-director-input"
+        name="director"
+        value="Maybe a specific director?"
+        type="text">
+    
+    <div id="movie-query-filters">
+
+        <select name="genre" id="genre">
+            <option class="genre-item">Or a filter?</option>
+            <option class="genre-item" value="28">Action</option>
+            <option class="genre-item" value="12">Adventure</option>
+            <option class="genre-item" value="16">Animation</option>
+            <option class="genre-item" value="35">Comedy</option>
+            <option class="genre-item" value="80">Crime</option>
+            <option class="genre-item" value="99">Documentary</option>
+            <option class="genre-item" value="18">Drama</option>
+            <option class="genre-item" value="10751">Family</option>
+            <option class="genre-item" value="14">Fantasy</option>
+            <option class="genre-item" value="36">History</option>
+            <option class="genre-item" value="27">Horror</option>
+            <option class="genre-item" value="10402">Music</option>
+            <option class="genre-item" value="9648">Mystery</option>
+            <option class="genre-item" value="10749">Romance</option>
+            <option class="genre-item" value="878">Science Fiction</option>
+            <option class="genre-item" value="53">Thriller</option>
+            <option class="genre-item" value="10752">War</option>
+            <option class="genre-item" value="37">Western</option>
+          </select>
+
+        <input 
+            id="movie-query-rating-input"
+            type="number"
+            value="6.6" 
+            name="rating">
+            
+    </div>
+    <button id="movie-query-submit" type="submit">Try my luck</button>
+</form>

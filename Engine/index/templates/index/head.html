@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html class="night" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+            {% if title -%}
+                {% block title %}{% endblock %} 
+            {% else %}
+                Whisma
+            {% endif %}
+    </title>
+    
+    <meta name="description" content="Whisma - An AI-powered movie recommendation website that combines the subtlety of whispers with the cinematic magic of a curated film experience. It employs advanced algorithms to analyze your viewing preferences, suggesting personalized movie choices with a touch of elegance.">
+    <meta name="keywords" content="Whisma, AI, movie, recommendation">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    <!-- Open Graph meta tags -->
+    <meta property="og:title" content="Whisma">
+    <meta property="og:description" content="An AI-powered movie recommendation website that combines the subtlety of whispers with the cinematic magic of a curated film experience. It employs advanced algorithms to analyze your viewing preferences, suggesting personalized movie choices with a touch of elegance.">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card meta tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Whisma">
+    <meta name="twitter:description" content="An AI-powered movie recommendation website that combines the subtlety of whispers with the cinematic magic of a curated film experience. It employs advanced algorithms to analyze your viewing preferences, suggesting personalized movie choices with a touch of elegance.">
+
+    <script src="../../../static/particles.js" type="text/javascript"></script>
+    <script src="{{ url_for('index.static', filename='head.js') }}" type="module"></script>
+
+    {% block script -%}{%- endblock script %}
+    {% block component_script -%}{%- endblock component_script %}
+
+    <link rel="stylesheet" href="{{ url_for('index.static', filename='head.css') }}">
+
+    {% block style -%}{%- endblock style %}
+    {% block component_style -%}{% endblock component_style %}
+        
+    {% with messages=get_flashed_messages() -%}
+    <ul class="flashes">
+        {% if messages -%} 
+            {% for message in messages -%}
+                <li class="message">{{ message }}</li>
+            {%- endfor %} 
+        {%- else -%}
+            <li class="message">{{ message }}</li>
+        {%- endif %}
+    </ul>
+    {%- endwith %}
+
+</head>
+
+<body>
+    
+    <div id="form-background"></div>
+    
+    {% block login -%}{%- endblock login %}
+    {% block register -%}{%- endblock register %}
+    {% block main -%}{%- endblock %}
+    {% block profile -%}{%- endblock profile %}
+
+</body>

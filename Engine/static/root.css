@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root.night {
+    --text: #fbf4f4;
+    --faded-text: #fbf4f4a2;
+    --background: black;
+    --faded-background: #000000f0;
+    --input-background: #181212;
+    --primary: #622224;
+    --secondary: #1e0b0b;
+    --navBar: #270f0f;
+    --accent: #b54042;
+}
+
+:root.day {
+    --text: #0b0404;
+    --faded-text: #0b0404a2;
+    --background: #f6e4e6;
+    --faded-background: #f6e4e6ed;
+    --input-background: #fff1e5;
+    --primary: #dd9d9f;
+    --secondary: #f4e1e1;
+    --navBar: #daabad;
+    --accent: #bf4a4c;
+
+}
+
+:root {
+    --fadedText: rgba(139, 139, 139, 0.781);
+    --iconFill: var(--text);
+    --rating-size: 4rem;
+    --bar-size: 5px;
+    --rating-color-default: #2980b9;
+    --rating-color-background: #c7e1f3;
+    --rating-color-good: #27ae60;
+    --rating-color-okay: #f1c40f;
+    --rating-color-bad: #e74c3c;
+}
+
+#particles-js {
+   width: 100dvw;
+   height: 100dvh;
+   position: fixed; 
+   z-index: 2;
+}
+
+button, .button {
+    padding: calc(0.3rem + 0.4vw);
+    border: none;
+    width: fit-content;
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--text);
+    background-color: var(--primary);
+}
+
+* {
+    font-size: 15px;
+    outline: 0px !important;
+    padding: 0px;
+    margin: 0px;
+    font-family: "Consolas", sans-serif;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+}
+
+p {
+    color: var(--text);
+    transition: 250ms ease;
+}
+
+a {
+    color: var(--text);
+    text-decoration: none;
+    transition: 250ms ease;
+}
+
+a:hover > p {
+    color: var(--accent);
+}
+
+body {
+    background-color: var(--background);
+}
+
+select > option {
+    color: var(--text);
+}
+
+svg > * {
+    pointer-events: none;
+}
+
+svg {
+    background-color: inherit;
+}
+
+input, select, select > option {
+    background-color: var(--background);
+}
+
+.small {
+    font-size: 12px;
+}
+
+#app-name {
+    color: var(--accent);
+    font-size: 1.5vw;
+}
+
+#form-background{
+    position: fixed;
+    width: 100dvw;
+    height: 100dvh;
+    transform: translateY(-100%);
+    background-color: var(--form-background);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);    z-index: 2;
+    opacity: 0;
+    transition: 250ms ease;
+}
+
+#form-background.active {
+    transform: translateY(0%);
+    opacity: 1;
+}
+
+@media screen and (orientation: portrait) {
+    #app-name {
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,102 @@
+.preview__page__comment__list__item {
+    display: grid;
+    grid-template-columns: 7% 1fr 5%;
+}
+
+.preview__page__comment__list__item__left {
+    display: grid;
+    place-items: center;
+}
+
+.preview__page__comment__list__item__left > img {
+    clip-path: circle();
+    width: 2rem;
+    height: 2.5rem;
+}
+
+.preview__page__comment__list__item__right {
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+.preview__page__comment__list__item__center > p {
+    margin-left: 1rem;
+}
+
+.preview__page__comment__list__item__center__input-box {
+    margin: 1rem;
+    margin-right: 0;
+}
+
+.preview__page__comment__list__item__center__input-box__input {
+    width: 100%;
+    resize: none;
+    border: none;
+    color: var(--text);
+    background-color: inherit;
+}
+
+.preview__page__comment__list__item__center__input-box__input.active {
+    border-bottom: 1px solid var(--faded-text);
+}
+
+.preview__page__comment__list__item__right > svg {
+    fill: var(--text);
+    cursor: pointer;
+    width: 1rem;
+}
+
+/* bottom options */
+.preview__page__comment__list__item__center__options {
+    justify-content: flex-end;
+    align-items: center;
+    display: none;
+    gap: 1rem;
+}
+
+.preview__page__comment__list__item__center__options > * {
+    cursor: pointer;
+}
+
+/* floating options */
+.preview__page__comment__list__item__options {
+    position: absolute;
+    right: 110%;
+    top: 20%;
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    display: none;
+    z-index: 2;
+    gap: 1rem;
+    opacity: 0;
+    transition: 350ms ease;
+    padding: 0.5em;
+    padding-left: 1rem;
+    background-color: var(--secondary);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.preview__page__comment__list__item__options > p {
+    cursor: pointer;
+}
+
+.preview__page__comment__list__item__options button {
+    background-color: var(--primary);
+    height: fit-content;
+}
+
+.preview__page__comment__list__item__options.active {
+    opacity: 1;
+    transform: translateY(10%);
+    -webkit-transform: translateY(10%);
+    -moz-transform: translateY(10%);
+    -ms-transform: translateY(10%);
+    -o-transform: translateY(10%);
+}
+
