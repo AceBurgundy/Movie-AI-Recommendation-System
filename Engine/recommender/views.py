@@ -32,7 +32,7 @@ def get_recommendations() -> RouteResponseType:
     if cached_recommendation:
         return RouteResponse.success(data=cached_recommendation)
 
-    recommendations: List[Dict[str, Union[str, int]]] = AI.old_recommend(title)
+    recommendations: List[Dict[str, Union[str, int]]] = AI.recommend(title)
 
     memo[title] = recommendations
 
