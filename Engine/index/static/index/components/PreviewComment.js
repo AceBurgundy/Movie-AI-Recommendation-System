@@ -1,4 +1,4 @@
-import { autoResize, getId, makeToastNotification } from "../../../../static/helper.js"
+import { autoResize, getId, isLandscape, makeToastNotification } from "../../../../static/helper.js"
 import Comment from "./Comment.js"
 
 export default class PreviewComment {
@@ -69,8 +69,9 @@ export default class PreviewComment {
         const optionsBox = getId("preview-page-comment-builder-right-options")
         commentInput.value.trim()
         optionsBox.classList.add("active")
-        commentRightbuilder.scrollIntoView({ behavior: "smooth" });
         commentRightbuilder.classList.add("active")
+
+        if (isLandscape()) commentRightbuilder.scrollIntoView({ behavior: "smooth" });
     }
 
     revertToDefaultState = (cancelComment, commentRightbuilder) => {

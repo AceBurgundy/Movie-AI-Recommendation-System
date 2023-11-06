@@ -108,10 +108,7 @@ export default class Preview {
         const response = await fetch(`/comments/${this.movieCsvId}`)
         const data = await response.json()
 
-        if (data.status === "failed") {
-            console.log(data.message)
-            return
-        }
+        if (data.status === "failed") return
         
         const comments = data.body.comments
         const currentUserCsvId = data.body.current_user_csv_id

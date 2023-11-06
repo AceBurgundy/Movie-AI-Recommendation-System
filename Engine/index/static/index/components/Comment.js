@@ -4,8 +4,6 @@ export default class Comment {
 	
 	constructor(commentData, current_user_csv_id, index) {
 
-		console.log(current_user_csv_id, commentData.user_csv_id);
-
 		this.commentAuthor = current_user_csv_id == commentData.user_csv_id
 
 		this.commentValue = commentData.content
@@ -197,7 +195,6 @@ export default class Comment {
 			
 			await this.fetchAndSetAuthorProfilePicture()
 
-			console.log(this.commentAuthor);
 			if (this.commentAuthor) {
 				commentDeleteButton.onclick = async () => await this.deleteComment()	
 				updateCommentButton.onclick = async () => await this.updateComment()

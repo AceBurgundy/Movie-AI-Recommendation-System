@@ -315,7 +315,5 @@ export const setMode = mode => {
             makeToastNotification(response.message)
         }
     })
-    .catch(error => {
-        console.log(error)
-    })
+    .catch(error => console.error(error))
 }
