@@ -1,11 +1,11 @@
-import asyncio
 from Engine.api_response import RouteResponse, RouteResponseType
-from flask import jsonify, Blueprint, request, url_for
+from flask import Blueprint, request, url_for
 from sqlalchemy.exc import SQLAlchemyError
 from Engine.csv_alchemy import CsvAlchemy
 from Engine.models import Comment, User
 from flask_login import current_user
 from typing import Union
+import threading
 
 from Engine.recommender.AI import refilter_users
 
@@ -92,7 +92,8 @@ def comment_movie(parameter_movie_csv_id) -> RouteResponseType:
 
         new_comment.insert()
 
-        asyncio.create_task(refilter_users())
+        background_thread = threading.Thread(target=refilter_users)
+        background_thread.start()
 
         return RouteResponse.success("Comment successfully added", { 
             "new_comment" : new_comment,
@@ -128,7 +129,8 @@ def update_comment(comment_id) -> RouteResponseType:
         if comment:
             comment.update(new_comment)
 
-        asyncio.create_task(refilter_users())
+        background_thread = threading.Thread(target=refilter_users)
+        background_thread.start()
 
         return RouteResponse.success("Comment successfully added", { "comment" : comment } )
     
@@ -158,7 +160,8 @@ def remove_comment(comment_id) -> RouteResponseType:
         if comment:
             comment.delete()
 
-        asyncio.create_task(refilter_users())
+        background_thread = threading.Thread(target=refilter_users)
+        background_thread.start()
 
         return RouteResponse.success("Comment removed successfully")
     

@@ -1,9 +1,9 @@
-import asyncio
 from Engine.api_response import RouteResponse, RouteResponseType
 from Engine.csv_alchemy import CsvAlchemy, ratings
 from flask_login import current_user
 from flask import Blueprint, request
 from pandas import DataFrame
+import threading
 
 from Engine.recommender.AI import refilter_users
 
@@ -91,7 +91,8 @@ def rate_movie(movies_csv_id) -> RouteResponseType:
                 "content": rating_value
             })
 
-            asyncio.create_task(refilter_users())
+            background_thread = threading.Thread(target=refilter_users)
+            background_thread.start()
 
             return RouteResponse.success("Movie rated successfully")
         else:
@@ -123,7 +124,8 @@ def unrate_movie(movie_csv_id) -> RouteResponseType:
             "movie_id": movie_csv_id
         })
 
-        asyncio.create_task(refilter_users())
+        background_thread = threading.Thread(target=refilter_users)
+        background_thread.start()
 
         return RouteResponse.success("Rating removed successfully")
     
