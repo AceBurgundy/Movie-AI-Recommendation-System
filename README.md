@@ -4,6 +4,7 @@ Welcome to the Whisma Movie Recommender App! Before you can start using the app,
 
 ## Prerequisites
 - Make sure you have the latest version of Python installed on your system.
+- (Optional) Create a virtual environment.
 
 ## Installation
 1. Clone or download this repository to your local machine.
@@ -21,23 +22,23 @@ Welcome to the Whisma Movie Recommender App! Before you can start using the app,
 
 6. Place the downloaded dataset files in a folder called `backup` inside the project's root directory. If the backup folder doesn't exist, make one.
 
-## Setting up the TMDB API
+### Setting up the TMDB API
 1. Get a working API for the script from https://www.themoviedb.org/settings/api
 2. Go to apiKey.js and replace the string with your own api key
 
     ```shell 
     Movie-AI-Recommendation-System/Engine/static/apiKey.js 
     
-## Database Setup
+### Database Setup
 To set up the database for the app, run the following command:
     
     python create_database.py
 
-This script will copy the dataset files from the backup folder to the appropriate location, create the database, and prepare it for use.
+This script will copy the dataset files from the backup folder to their appropriate location, create the database, and prepare it for use.
 
-The app will then prompt you if you want to start running the app.
+It will then prompt you if you want to start running the app.
 
-## Running the App
+### Running the App
 
 The next time you run the app you may simply use the command:
 
