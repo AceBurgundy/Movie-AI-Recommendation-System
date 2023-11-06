@@ -1,5 +1,5 @@
-from flask import Blueprint, jsonify, redirect, render_template, request, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
+from flask import Blueprint, redirect, render_template, request, url_for
 from Engine.api_response import RouteResponse, RouteResponseType
 from flask_login import current_user, login_user, logout_user
 from Engine.user.forms import RegisterForm, LoginForm
