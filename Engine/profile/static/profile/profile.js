@@ -53,6 +53,7 @@ if (isAllowed()) {
 const deleteAccountToggle = getId("delete-account-toggle")
 const profilePictureInput = getId("profile-picture-input")
 const profileTopControls = getId("profile-top-controls")
+const deleteAccountForm = getId("delete-account-form")
 const cancelButton = getId("profile-close-button")
 const cameraIcon = getId("camera-icon-container")
 const imageInput = getId("profile-picture-input")
@@ -187,21 +188,21 @@ getId("new-password-update-button").onclick = (event) => {
 if (deleteAccountToggle) {
     deleteAccountToggle.onclick = () => {
         formBackground.classList.add("active")
-        getId("delete-account-form").classList.add("active")
+        deleteAccountForm.classList.add("active")
     }
 }
 
 getId("delete-account-cancel").onclick = () => {
     formBackground.classList.remove("active")
-    getId("delete-account-form").classList.remove("active")
+    deleteAccountForm.classList.remove("active")
 }
 
 // delete account form submission
-getId("delete-account-form").addEventListener("submit", (event) => {
+deleteAccountForm.onsubmit = event => {
     
     event.preventDefault()
 
-    const formData = new FormData(getId("delete-account-form"))
+    const formData = new FormData(deleteAccountForm)
 
     fetch("/profile/delete", {
         method: "POST",
@@ -211,10 +212,10 @@ getId("delete-account-form").addEventListener("submit", (event) => {
         .then(response => {
             if (response.status === "error") {
                 makeToastNotification(response.message)
-                getId("delete-account-form").reset()
+                deleteAccountForm.reset()
             } else {
                 window.location.href = response.url
             }
         })
         .catch(error => console.log(error))
-})
+}
