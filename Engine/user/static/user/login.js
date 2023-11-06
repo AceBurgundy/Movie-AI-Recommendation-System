@@ -46,6 +46,10 @@ getId("login-button").onclick = async event => {
         }
 
         const data = await response.json()
+        
+        if (data.body && Array.isArray(data.body[0])) {
+            makeToastNotification(data.body[0])
+        }
 
         if (data.message) {
             makeToastNotification(data.mesasge)
