@@ -4,6 +4,7 @@ Welcome to the Whisma Movie Recommender App! Before you can start using the app,
 
 ## Prerequisites
 - Make sure you have the latest version of Python installed on your system.
+- (Optional) Create a virtual environment.
 
 ## Installation
 1. Clone or download this repository to your local machine.
