@@ -25,7 +25,7 @@ getId("toggle-refresh").onclick = () => {
 	warning.show()
 }
 
-const loadRecommendationBox = async movieObjects => {
+const loadRecommendationBox = movieObjects => {
 	if (movieObjects) new RecommendationBox(movieObjects)
 }
 
@@ -92,13 +92,13 @@ movieQueryForm.onsubmit = async event => {
 
 	const formData = new FormData(movieQueryForm)
 
-	const recommendations = retrieveRecommendations(formData)
+	const recommendations = await retrieveRecommendations(formData)
 
 	updateStatus("Loading library")
 
 	setTimeout(() => clearStatus(), 250)
 
-	await loadRecommendationBox(recommendations)
+	loadRecommendationBox(recommendations)
 
 	showRefreshButton()
 }
