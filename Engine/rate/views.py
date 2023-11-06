@@ -23,15 +23,17 @@ def user_movie_rating(movie_csv_id) -> RouteResponseType:
     - JSON: A JSON response indicating the success or failure of acquiring the movies rating.
     """
 
-    result = ratings.clean_retrieve({
-        "user_id" : current_user.csv_id,
-        "movie_id" : movie_csv_id,
-    })
+    try:
 
-    if not result:
+        result = ratings.clean_retrieve({
+            "user_id" : current_user.csv_id,
+            "movie_id" : movie_csv_id,
+        })
+        return RouteResponse.success(data=result)
+    
+    except CsvAlchemy.RowNotFoundException:
         return RouteResponse.failed()
 
-    return RouteResponse.success(data=result)
 
 @rating.get('/rate/<int:movie_csv_id>')
 def movie_rating(movie_csv_id) -> RouteResponseType:
