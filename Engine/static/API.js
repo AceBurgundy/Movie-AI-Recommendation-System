@@ -27,7 +27,7 @@ export const recommend = async movieForm => {
 		await handleNetworkErrors(response)
 
 		const data = await response.json()
-
+		
 		if (data.status === "success") {
 			return data.body
 		}
@@ -92,7 +92,7 @@ export const getMovieData = async title => {
 		const movieData = await getMovie(title)
 
 		if (!movieData) {
-			makeToastNotification("Movie not found")
+			makeToastNotification(`Movie ${title} not found`)
 			return null
 		}
 
@@ -107,8 +107,9 @@ export const getMovieData = async title => {
 			posterUrl,
 			movieTrailer,
 		}
+		
 	} catch (error) {
-		makeToastNotification(LOST_CONNECTION)
-		return new Error("Failed to get movie data")
+		console.warn("Failed to get movie data")
+		return null
 	}
 }
