@@ -33,9 +33,9 @@ To set up the database for the app, run the following command:
     
     python create_database.py
 
-This script will copy the dataset files from the backup folder to the appropriate location, create the database, and prepare it for use.
+This script will copy the dataset files from the backup folder to their appropriate location, create the database, and prepare it for use.
 
-The app will then prompt you if you want to start running the app.
+It will then prompt you if you want to start running the app.
 
 ## Running the App
 
