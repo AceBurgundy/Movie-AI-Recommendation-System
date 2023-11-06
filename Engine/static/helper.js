@@ -92,6 +92,10 @@ export function makeToastNotification(message) {
     
     if (!Array.isArray(message)) {
 
+        if (message === undefined) {
+            return
+        }
+
         if (message === "") return
 
         let newToast = `
@@ -111,7 +115,11 @@ export function makeToastNotification(message) {
         return
     }
     
-    message.forEach(messageItem => makeToastNotification(messageItem))
+    message.forEach(messageItem => {
+        if (message !== undefined) {
+            makeToastNotification(messageItem)
+        }
+    })
 
 }
 
