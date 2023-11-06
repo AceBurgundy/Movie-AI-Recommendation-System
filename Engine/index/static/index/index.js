@@ -50,6 +50,34 @@ const movieObjectsListApproved = movieObjectsList => {
 	return true
 }
 
+async function retrieveRecommendations(formData) {
+	updateStatus("Retrieving movie data")
+
+	const noDate = inputString => inputString.replace(/\([^)]*\)/g, "")
+
+	const movieObjectsList = await recommend(formData)
+
+	if (!movieObjectsListApproved(movieObjectsList)) return
+
+	const mapMovieData = await Promise.all(
+		movieObjectsList.map(async movie => {
+			const movieTitle = movie["title"]
+			const movieCsvId = movie["movie_id"]
+
+			const movieData = await getMovieData(noDate(movieTitle))
+
+			if (movieData === null || movieData.data === null) return null
+
+			movieData.data["csv_id"] = movieCsvId
+			return movieData
+		})
+	)
+
+	const filteredNulls = mapMovieData.filter(movie => movie !== null)
+
+	return filteredNulls
+}
+
 const movieTitleInput = getId("movie-query-director-input")
 
 movieQueryForm.onsubmit = async event => {
