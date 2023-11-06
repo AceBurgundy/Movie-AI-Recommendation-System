@@ -3,17 +3,17 @@ import { recommend, getMovieData } from "../../../static/API.js"
 import Warning from "./components/Warning.js"
 
 import { 
-    getId,
-    makeToastNotification,
-    updateStatus,
-    clearStatus,
-    showQueryForm,
-    showRefreshButton,
-    hideQueryForm
+	getId,
+	makeToastNotification,
+	updateStatus,
+	clearStatus,
+	showQueryForm,
+	showRefreshButton,
+	hideQueryForm 
 } from "../../../static/helper.js"
 
-particlesJS.load('particles-js', "../../../static/particles.json", function() {
-    console.log('callback - particles.js config loaded')
+particlesJS.load("particles-js", "../../../static/particles.json", function () {
+	console.log("callback - particles.js config loaded")
 })
 
 const movieQueryForm = getId("movie-query")
@@ -41,7 +41,6 @@ const movieObjectsListApproved = movieObjectsList => {
 		return false
 	}
 
-	
 	if (movieObjectsList.length === 0) {
 		reset("Did not receive any recommendations")
 		return false
@@ -81,8 +80,7 @@ async function retrieveRecommendations(formData) {
 const movieTitleInput = getId("movie-query-director-input")
 
 movieQueryForm.onsubmit = async event => {
-
-    event.preventDefault()
+	event.preventDefault()
 
 	const title = movieTitleInput.value.trim()
 
@@ -92,38 +90,15 @@ movieQueryForm.onsubmit = async event => {
 
 	updateStatus("Using AI for tailored results")
 
-    const formData = new FormData(movieQueryForm)
+	const formData = new FormData(movieQueryForm)
 
-	const movieObjectsList = await recommend(formData)
-	console.log(movieObjectsList);
-	
-	if (!movieObjectsListApproved(movieObjectsList)) return
+	const recommendations = retrieveRecommendations(formData)
 
-	const noDate = inputString => inputString.replace(/\([^)]*\)/g, "")
-
-	updateStatus("Retrieving movie data")
-
-    const filteredMovieObjects = await Promise.all(movieObjectsList.map(async movie => {
-		const movieTitle = movie["title"]
-		const movieCsvId = movie["movie_id"]
-
-		const movieData = await getMovieData(noDate(movieTitle))
-
-		if (movieData.data === null || movieData === null) {
-			return null
-		}
-		
-		movieData.data["csv_id"] = movieCsvId
-		return movieData
-	}))
-    
 	updateStatus("Loading library")
 
-	setTimeout(() => {
-		clearStatus()
-	}, 250)
+	setTimeout(() => clearStatus(), 250)
 
-	await loadRecommendationBox(filteredMovieObjects)
+	await loadRecommendationBox(recommendations)
 
 	showRefreshButton()
 }
