@@ -1,5 +1,6 @@
 from Engine.csv_alchemy import CsvAlchemy, movies, ratings, user_ids, comments
 from typing import Any, Callable, Optional, Union
+from pandas import Series
 import re
 
 # Type aliases
@@ -53,11 +54,11 @@ def get_latest_csv_user_id() -> int:
         return 1
 
     if user_ids.csv_data.empty:
-        most_recent_user = ratings.csv_data['user_id'].max() + 1        
+        most_recent_user: int = ratings.csv_data['user_id'].max() + 1        
         set_initial_user_id(most_recent_user)
         return most_recent_user.item()
 
-    most_recent_user = user_ids.csv_data['user_id'].max() + 1
+    most_recent_user: int = user_ids.csv_data['user_id'].max() + 1
     set_initial_user_id(most_recent_user)
     return most_recent_user.item()
 
@@ -73,12 +74,12 @@ def get_latest_csv_comment_id() -> int:
     if comments.csv_data.empty:
         return 1
 
-    most_recent_user = comments.csv_data['comment_id']
+    most_recent_user: DataFrame = comments.csv_data['comment_id']
 
     if most_recent_user.empty:
         return 1
 
-    next_user = most_recent_user.max() + 1
+    next_user: int = most_recent_user.max() + 1
     return next_user.item()
 
 def set_initial_user_id(user_id: int) -> None:
@@ -133,7 +134,7 @@ def find_movie_id(movie_title) -> Union[int, None]:
     """
     try:
 
-        retrieve_movie = movies.clean_retrieve({
+        retrieve_movie: Series = movies.clean_retrieve({
             "title" : movie_title
         })
 
